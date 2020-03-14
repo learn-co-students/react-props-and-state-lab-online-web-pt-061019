@@ -26,7 +26,7 @@ class App extends React.Component {
   };
 
   onFindPetsClick = () => {
-    let url = "./api/pets";
+    let url = "/api/pets";
     if (this.state.filters.type !== "all") {
       url += `?type=${this.state.filters.type}`;
     }
