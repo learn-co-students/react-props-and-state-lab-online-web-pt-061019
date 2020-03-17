@@ -27,8 +27,11 @@ class App extends React.Component {
       .then(pets => this.setState({ pets }));
   };
 
-  onChangeType = ({ target: { value } }) => {
-    this.setState({ filters: { ...this.state.filters, type: value } });
+  // onChangeType = ({ target: { value } }) => {
+  onChangeType =(e) => {
+    // this.setState({ filters: { ...this.state.filters, type: value } });
+        this.setState({ filters: { ...this.state.filters, type: e.target.value } });
+
   };
 
   onAdoptPet = petId => {
