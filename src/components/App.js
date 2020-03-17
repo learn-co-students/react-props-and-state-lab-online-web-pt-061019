@@ -44,6 +44,8 @@ class App extends React.Component {
       if (element.id === id) {
         element.isAdopted = true
         return element
+      } else {
+        return element
       }
     })
     this.setState({

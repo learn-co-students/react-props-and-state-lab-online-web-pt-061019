@@ -11,14 +11,14 @@ class Pet extends React.Component {
 
   displayButton = () => {
     if (this.props.pet.isAdopted === false) {
-      return <button className="ui primary button" onClick={event => this.handleClick(event)}>Adopt pet</button>
+      return <button className="ui primary button" onClick={this.handleClick}>Adopt pet</button>
     } else {
       return <button className="ui disabled button">Already adopted</button>
     }
   }
 
-  handleClick = (event) => {
-    event.preventDefault()
+  handleClick = () => {
+    // event.preventDefault()
     this.props.onAdoptPet(this.props.pet.id)
   }
 

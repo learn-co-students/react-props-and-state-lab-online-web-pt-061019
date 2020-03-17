@@ -6,7 +6,7 @@ class PetBrowser extends React.Component {
   generatePetCards = () => {
     // map over your movieData array and return an array of the correct JSX
     return this.props.pets.map(pet => {
-      return <Pet pet={pet} onAdoptPet={this.props.onAdoptPet}/>
+      return <Pet key={pet.id} pet={pet} onAdoptPet={this.props.onAdoptPet}/>
     })
   }
 
