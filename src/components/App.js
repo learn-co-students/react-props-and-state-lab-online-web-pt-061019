@@ -16,6 +16,7 @@ class App extends React.Component {
   }
 
   onChangeType = (e) => {
+    // console.log(e.target.value)
     let pet = e.target.value // Can I refactor this?
     this.setState({
       filters: {
@@ -23,14 +24,14 @@ class App extends React.Component {
         type: pet
       }
     })
+    // console.log(this.state.filters.type)
   }
 
-  onFindPetsClick = (e) => {
+  onFindPetsClick = () => {
     let URL = '/api/pets'
 
     if (this.state.filters.type != "all") {
       URL =  `/api/pets?type=${this.state.filters.type}`
-      // URL += this.state.filters.type
       console.log(URL)
     }
 
@@ -39,6 +40,19 @@ class App extends React.Component {
     .then(pets => this.setState({
       pets: pets
     }))
+  }
+
+  onAdoptPet = (id) => {
+    // Map over the existing pets
+    // If one is found where the ID matches (from the adopt button) change isAdopted status to true
+    // Otherwise, return all pets with no changes
+    // Then, update the state of all pets
+    const pets = this.state.pets.map(p => {
+      return p.id === id ? {...p, isAdopted: true} : p
+    });
+    this.setState({
+      pets: pets
+    })
   }
 
   render() {
@@ -53,7 +67,7 @@ class App extends React.Component {
               <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick} />
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser onAdoptPet={this.onAdoptPet} pets={this.state.pets} />
             </div>
           </div>
         </div>
