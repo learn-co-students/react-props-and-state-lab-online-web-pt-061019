@@ -1,6 +1,6 @@
 import React from 'react'
 
-// How does the onClick anonymouse function work? Could it be a named function instead
+// How does the onClick anonymouse function work? Could it be a named function instead?
 class Pet extends React.Component {
   render() {
     return (
